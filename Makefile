@@ -19,8 +19,39 @@ HEADERS := $(INCLUDE)/storage.h
 Z := $(PACKAGE)/__init__.py
 Z += $(PACKAGE)/storage.so
 
+# instructions
+INSTRUCTIONS := $(PACKAGE)/instructions/__init__.py
+INSTRUCTIONS += $(PACKAGE)/instructions/s360.py
+INSTRUCTIONS += $(PACKAGE)/instructions/s370.py
+INSTRUCTIONS += $(PACKAGE)/instructions/s390.py
+INSTRUCTIONS += $(PACKAGE)/instructions/z13.py
+INSTRUCTIONS += $(PACKAGE)/instructions/z14.py
+INSTRUCTIONS += $(PACKAGE)/instructions/z15.py
+INSTRUCTIONS += $(PACKAGE)/instructions/z16.py
+
+# assembly instructions
+INSTRUCTIONS += $(PACKAGE)/instructions/assembly/__init__.py
+
+# control instructions
+INSTRUCTIONS += $(PACKAGE)/instructions/control/__init__.py
+
+# decimal instructions
+INSTRUCTIONS += $(PACKAGE)/instructions/decimal/__init__.py
+
+# float instructions
+INSTRUCTIONS += $(PACKAGE)/instructions/float/__init__.py
+
+# general instructions
+INSTRUCTIONS += $(PACKAGE)/instructions/general/__init__.py
+
+# io instructions
+INSTRUCTIONS += $(PACKAGE)/instructions/io/__init__.py
+
+# vector instructions
+INSTRUCTIONS += $(PACKAGE)/instructions/vector/__init__.py
+
 # default rule - make (almost) everything
-all: $(Z) 
+all: $(Z) $(INSTRUCTIONS)
 
 # python build configuration
 config:

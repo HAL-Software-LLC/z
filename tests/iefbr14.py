@@ -2,9 +2,7 @@
 
 import unittest
 
-#from z.assembly import *
-#from z.registers import *
-#from z.instructions import BR, LTR, LHI
+from z.instructions import *
 
 @RSECT
 class IEFBR14:
@@ -32,7 +30,7 @@ class ExecutionTests(unittest.TestCase):
   """
   def test_execution(self):
     """
-    Execute the mofule. Confirm that R15 is set to 0 and that the condition codes are cleared.
+    Execute the module. Confirm that R15 is set to 0 and that the condition codes are cleared.
     """
     IEFBR14()
     self.assertEqual(R15, 0)
