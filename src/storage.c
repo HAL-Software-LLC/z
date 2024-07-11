@@ -1,11 +1,11 @@
 #define PY_SSIZE_T_CLEAN
 #include <Python.h>
 
-#include "core/storage.h"
+#include "storage.h"
 
 static PyTypeObject StorageType = {
 	.ob_base = PyVarObject_HEAD_INIT(NULL, 0)
-	.tp_name = "core.storage.Storage",
+	.tp_name = "z.storage.Storage",
 	.tp_doc = PyDoc_STR(
     "This type is used to represent and manipulate data on the IBM Z family of computers."),
 	.tp_basicsize = sizeof(Storage),
@@ -16,16 +16,16 @@ static PyTypeObject StorageType = {
 
 static PyModuleDef StorageModule = {
   .m_base = PyModuleDef_HEAD_INIT,
-  .m_name = "core.storage",
+  .m_name = "z.storage",
   .m_doc = PyDoc_STR(
     "This module defines types and functions for representing and manipulating data "
     "on the IBM Z family of computers."),
   .m_size = -1,
 };
 
-PyMODINIT_FUNC PyInit_core(void) {
+PyMODINIT_FUNC PyInit_storage(void) {
   /*
-  Initialize the `core.storage` module.
+  Initialize the `z.storage` module.
   */
   PyObject *m;
   
