@@ -56,6 +56,7 @@ all: $(Z) $(INSTRUCTIONS)
 # python build configuration
 config:
 	python $(BIN)/getconfig.py > python.cnf
+	cat python.cnf
 
 # python module - copy source file from source to target
 $(PACKAGE)/%.py: $(SRC)/%.py
@@ -77,7 +78,7 @@ $(VENV):
 
 # cleanup rule
 clean:
-	rm -rf $(OBJ) $(PACKAGE)
+	rm -rf $(OBJ) $(PACKAGE) python.cnf
 
 # keep intermediate objects around
 .PRECIOUS: $(OBJ)/%.o
