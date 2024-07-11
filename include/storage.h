@@ -1,8 +1,8 @@
 #define PY_SSIZE_T_CLEAN
 #include <Python.h>
 
-#ifndef Z_CORE_STORAGE_H
-#define Z_CORE_STORAGE_H
+#ifndef Z_STORAGE_H
+#define Z_STORAGE_H
 
 typedef struct {
   PyObject_HEAD
@@ -20,7 +20,6 @@ typedef struct {
 
   // type information
   unsigned char asmtype;
-  unsigned char
 
 } Storage;
 
