@@ -1,13 +1,13 @@
 """iefbr14.py - A python implementation of the MVS "do nothing" module, IEFBR14."""
 
-import random
 import unittest
 
-from z.assembly import *
-from z.registers import *
-from z.instructions import BR, LTR, LHI
+#from z.assembly import *
+#from z.registers import *
+#from z.instructions import BR, LTR, LHI
 
-class IEFBR14(RSECT):
+@RSECT
+class IEFBR14:
   """
   A python implementation of the MVS "do nothing" module, IEFBR14.
   """
