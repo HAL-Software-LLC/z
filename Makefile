@@ -52,11 +52,7 @@ INSTRUCTIONS += $(PACKAGE)/instructions/vector/__init__.py
 
 # default rule - make (almost) everything
 all: $(Z) $(INSTRUCTIONS)
-
-# python build configuration
-config:
-	python $(BIN)/getconfig.py > python.cnf
-	cat python.cnf
+	python -m compileall $(PACKAGE)
 
 # python module - copy source file from source to target
 $(PACKAGE)/%.py: $(SRC)/%.py
@@ -75,6 +71,15 @@ $(PACKAGE)/%.so: $(OBJ)/%.o
 # virtual environment - activate using `source venv/bin/activate`
 $(VENV):
 	python -m venv $(VENV)
+
+# compile everything
+compile:
+	python -m compileall $(PACKAGE)
+
+# python build configuration
+config:
+	python $(BIN)/getconfig.py > python.cnf
+	cat python.cnf
 
 # cleanup rule
 clean:
