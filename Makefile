@@ -66,7 +66,7 @@ $(PACKAGE)/%.py: $(SRC)/%.py
 # python extension module - build intermediate objects
 $(OBJ)/%.o: $(SRC)/%.c $(HEADERS)
 	mkdir -p $(OBJ)
-	$(CC) $(CFLAGS) -I $(INCLUDE) -I$(INCLUDEPY) -c -o $@ $<
+	$(CC) $(CFLAGS) $(CCSHARED) -I$(INCLUDE) -I$(INCLUDEPY) -c -o $@ $<
 
 # python extension module - run linker to create shared object
 $(PACKAGE)/%.so: $(OBJ)/%.o
@@ -78,7 +78,7 @@ $(VENV):
 
 # cleanup rule
 clean:
-	rm -rf $(OBJ) $(PACKAGE) python.cnf
+	rm -rf $(OBJ) $(PACKAGE)
 
 # keep intermediate objects around
 .PRECIOUS: $(OBJ)/%.o
