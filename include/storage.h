@@ -20,6 +20,7 @@ typedef struct {
 
   // type information
   unsigned char asmtype;
+  unsigned char datatype;
 
 } Storage;
 

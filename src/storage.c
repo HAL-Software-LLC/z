@@ -3,6 +3,25 @@
 
 #include "storage.h"
 
+// instantiation / destruction
+
+// representation / conversion
+
+PyObject *Storage_repr(PyObject *self) {
+  /*
+  Represent this instance of Storage as a String, ideally in a way such that eval(repr(r)) == r.
+  */
+  Py_RETURN_NOTIMPLEMENTED;
+}
+
+PyObject *Storage_str(PyObject *self) {
+  /*
+  Represent this instance of Storage as  String, converting from EBCDIC to ASCII.
+  */
+  Py_RETURN_NOTIMPLEMENTED;
+}
+
+
 static PyTypeObject StorageType = {
 	.ob_base = PyVarObject_HEAD_INIT(NULL, 0)
 	.tp_name = "z.storage.Storage",
@@ -12,6 +31,8 @@ static PyTypeObject StorageType = {
 	.tp_itemsize = 0,
 	.tp_flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_BASETYPE,
 	.tp_new = PyType_GenericNew,
+  .tp_repr = Storage_repr,
+  .tp_repr = Storage_str,
 };
 
 static PyModuleDef StorageModule = {
