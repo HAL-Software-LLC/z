@@ -14,13 +14,24 @@ PACKAGE := z
 
 # headers
 HEADERS := $(INCLUDE)/storage.h
+HEADERS := $(INCLUDE)/instruction.h
+HEADERS := $(INCLUDE)/instructions/rr.h
 
 # core package components
 Z := $(PACKAGE)/__init__.py
 Z += $(PACKAGE)/storage.so
+Z += $(PACKAGE)/instruction.so
+Z += $(PACKAGE)/core.py
 
 # instructions
 INSTRUCTIONS := $(PACKAGE)/instructions/__init__.py
+INSTRUCTIONS += $(PACKAGE)/instructions/formats.py
+#INSTRUCTIONS += $(PACKAGE)/instructions/rr.c
+#INSTRUCTIONS += $(PACKAGE)/instructions/rs.c
+#INSTRUCTIONS += $(PACKAGE)/instructions/rx.c
+#INSTRUCTIONS += $(PACKAGE)/instructions/rx.c
+#INSTRUCTIONS += $(PACKAGE)/instructions/si.c
+#INSTRUCTIONS += $(PACKAGE)/instructions/ss.c
 INSTRUCTIONS += $(PACKAGE)/instructions/s360.py
 INSTRUCTIONS += $(PACKAGE)/instructions/s370.py
 INSTRUCTIONS += $(PACKAGE)/instructions/s390.py
@@ -52,7 +63,6 @@ INSTRUCTIONS += $(PACKAGE)/instructions/vector/__init__.py
 
 # default rule - make (almost) everything
 all: $(Z) $(INSTRUCTIONS)
-	python -m compileall $(PACKAGE)
 
 # python module - copy source file from source to target
 $(PACKAGE)/%.py: $(SRC)/%.py
@@ -61,11 +71,12 @@ $(PACKAGE)/%.py: $(SRC)/%.py
 
 # python extension module - build intermediate objects
 $(OBJ)/%.o: $(SRC)/%.c $(HEADERS)
-	mkdir -p $(OBJ)
+	mkdir -p $(@D)
 	$(CC) $(CFLAGS) $(CCSHARED) -I$(INCLUDE) -I$(INCLUDEPY) -c -o $@ $<
 
 # python extension module - run linker to create shared object
 $(PACKAGE)/%.so: $(OBJ)/%.o
+	mkdir -p $(@D)
 	$(BLDSHARED) $(LDFLAGS) $< -o $@ -L$(abspath .) -Wl,-rpath=$(abspath .)
 
 # virtual environment - activate using `source venv/bin/activate`

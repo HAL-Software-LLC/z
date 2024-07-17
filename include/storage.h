@@ -15,9 +15,6 @@ typedef struct {
   uint64_t size;
   uint64_t length;
 
-  // alignment (generally 1=byte, 2=halfword, 4=word, 8=doubleword, or 16=quadword)
-  unsigned char boundary;
-
   // type information
   unsigned char asmtype;
   unsigned char datatype;
