@@ -9,7 +9,7 @@ VENV := venv
 BIN := bin
 INCLUDE := include
 SRC := src
-OBJ += obj
+OBJ := obj
 PACKAGE := z
 
 # headers
